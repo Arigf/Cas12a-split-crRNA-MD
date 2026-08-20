@@ -5,10 +5,14 @@ MD Analysis Script : analysis_202608
 MD results : https://zenodo.org/records/22024385?token=eyJhbGciOiJIUzUxMiJ9.eyJpZCI6Ijk2Y2Y1NWUxLTMyY2QtNDc3Zi1iZjQwLTE4OTFlZDBiNDg3NCIsImRhdGEiOnt9LCJyYW5kb20iOiI1MWRmYTljOTlkMzU4Y2YwNTI0YmM1MDBmMjVmNzU0ZiJ9.dj7YZu6WLKfE7GNi3EYPJDFFqFZ8P4IoAeszXbxwBSGmtVOVa6j_HGNuW0oXxbCSqJ_ipExeB0SJBmqVY4eGqQ
 
 ### Naming Abbreviation
-OsDEP1-MM17-FL : MM-Full
-OsDEP1-MM17-Split : MM-Split
-OsDEP1-PM-FL : Match-Full
-OsDEP1-PM-Split : Match-Split
+OsDEP1-MM17-FL : MM-Full.
+
+OsDEP1-MM17-Split : MM-Split.
+
+OsDEP1-PM-FL : Match-Full.
+
+OsDEP1-PM-Split : Match-Split.
+
 
 ## MD Method
 ### Step 1. AlphaFold3 prediction
