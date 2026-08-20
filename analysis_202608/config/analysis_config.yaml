@@ -1,0 +1,166 @@
+project:
+  name: Cas12a_split_crRNA_M17_MD
+  engine: amber
+  source_plan: docs/Cas12a_split_crRNA_M17_MD_analysis_plan.md
+  random_seed: 20260730
+
+systems:
+  Match-Full:
+    crRNA_form: full
+    target_state: match
+    topology: input/Match-Full/system.prmtop
+    trajectories:
+      - input/Match-Full/rep1.nc
+      - input/Match-Full/rep2.nc
+      - input/Match-Full/rep3.nc
+    reference_structure: input/Match-Full/reference.pdb
+
+  MM-Full:
+    crRNA_form: full
+    target_state: M17_mismatch
+    topology: input/MM-Full/system.prmtop
+    trajectories:
+      - input/MM-Full/rep1.nc
+      - input/MM-Full/rep2.nc
+      - input/MM-Full/rep3.nc
+    reference_structure: input/MM-Full/reference.pdb
+
+  Match-Split:
+    crRNA_form: split
+    target_state: match
+    topology: input/Match-Split/system.prmtop
+    trajectories:
+      - input/Match-Split/rep1.nc
+      - input/Match-Split/rep2.nc
+      - input/Match-Split/rep3.nc
+    reference_structure: input/Match-Split/reference.pdb
+
+  MM-Split:
+    crRNA_form: split
+    target_state: M17_mismatch
+    topology: input/MM-Split/system.prmtop
+    trajectories:
+      - input/MM-Split/rep1.nc
+      - input/MM-Split/rep2.nc
+      - input/MM-Split/rep3.nc
+    reference_structure: input/MM-Split/reference.pdb
+
+optional_systems: {}
+
+analysis:
+  discard_ns: 20
+  stride: 10
+  temperature_K: 300
+  time_unit: ns
+  distance_unit: angstrom
+  sasa_probe_radius_A: 1.4
+  contact_cutoff_A: 4.0
+  hbond_distance_cutoff_A: 3.5
+  hbond_angle_cutoff_deg: 120
+  stable_contact_occupancy_cutoff: 0.30
+
+preprocessing:
+  keep_raw_with_solvent: true
+  strip_solvent_for_structural_metrics: true
+  autoimage: true
+  center_selection: complex
+  global_fit_selection: cas12a_alignment
+  local_ruvc_fit_selection: ruvc_domain
+
+selections:
+  complex: ":COMPLEX_RESIDUES"
+  protein: ":1-XXXX"
+  cas12a_alignment: ":1-XXXX@CA,C,N,O"
+
+  target_dna: ":YYYY-ZZZZ"
+  dna_mismatch_residue: ":DNA_M17"
+  dna_neighbor_5prime: ":DNA_M16"
+  dna_neighbor_3prime: ":DNA_M18"
+  dna_distal_region: ":DNA_M15-DNA_M20"
+
+  guide_rna: ":AAAA-BBBB"
+  split_rna_front: ":AAAA-CCCC"
+  split_rna_back: ":DDDD-BBBB"
+  split_break_front_terminal: ":CCCC"
+  split_break_back_terminal: ":DDDD"
+  guide_m17_residue: ":RNA_G17"
+  guide_distal_region: ":RNA_G15-RNA_G20"
+
+  ruvc_domain: ":RUVC_RESIDUES"
+  ruvc_catalytic_residues: ":CATALYTIC_RESIDUES"
+  ruvc_lid: ":926-941"
+  bridge_helix: ":870-890"
+  ruvc_helix1: ":RUVCH1_RESIDUES"
+  ruvc_entry_reference: ":832,835-837,925,998-1003,1013,1054,1074,1076,1083-1084,1138,1140-1143,1148,1180,1208,1210"
+
+  optional_reporter_path_reference: ":REFERENCE_DNA_PATH"
+
+domains:
+  REC1: ":REC1_RESIDUES"
+  REC2: ":REC2_RESIDUES"
+  WED: ":WED_RESIDUES"
+  PI: ":PI_RESIDUES"
+  NUC: ":NUC_RESIDUES"
+  RuvC: ":RUVC_RESIDUES"
+  RuvC_lid: ":926-941"
+  bridge_helix: ":870-890"
+  RuvC_helix1: ":RUVCH1_RESIDUES"
+
+sasa:
+  nucleotide_parts:
+    base: "name N1 N2 N3 N4 N6 N7 N9 C2 C4 C5 C6 C8 O2 O4 O6"
+    sugar: "name C1' C2' C3' C4' C5' O2' O3' O4' O5'"
+    phosphate: "name P OP1 OP2 O1P O2P"
+  relative_sasa_reference: {}
+
+bsa:
+  groups:
+    backRNA_protein:
+      group_a: split_rna_back
+      group_b: protein
+    backRNA_DNA:
+      group_a: split_rna_back
+      group_b: target_dna
+    backRNA_frontRNA:
+      group_a: split_rna_back
+      group_b: split_rna_front
+
+pocket:
+  enabled: true
+  method_order:
+    - povme
+    - mdpocket
+    - fpocket
+    - grid_volume
+  entry_region_selection: ruvc_entry_reference
+  grid_spacing_A: 1.0
+  padding_A: 6.0
+  probe_radii_A:
+    - 1.4
+    - 2.5
+    - 3.0
+    - 4.0
+    - 5.0
+
+density:
+  alignment_selection: ruvc_domain
+  density_selection: split_rna_back
+  grid_spacing_A: 1.0
+  output_formats:
+    - dx
+    - mrc
+
+statistics:
+  replicate_is_independent_unit: true
+  block_length_ns: 5
+  bootstrap_samples: 10000
+  confidence_interval: 0.95
+  interaction_formula: "(MM-Split - Match-Split) - (MM-Full - Match-Full)"
+
+outputs:
+  root: results
+  tables: results/tables
+  figures: results/figures
+  structures: results/structures
+  reports: results/reports
+  logs: results/logs

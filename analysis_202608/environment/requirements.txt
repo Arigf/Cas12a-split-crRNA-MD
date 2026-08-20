@@ -1,0 +1,13 @@
+numpy
+pandas
+scipy
+matplotlib
+seaborn
+scikit-learn
+statsmodels
+PyYAML
+pyarrow
+tqdm
+MDAnalysis
+mdtraj
+
