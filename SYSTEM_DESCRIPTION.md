@@ -4,7 +4,7 @@ This dataset contains the first-batch Cas12a MD systems used to compare full-len
 
 ## Systems
 
-| Dataset name | Short label | Description |
+| Dataset name  Description |
 |---|---|
 | `OsDEP1-PM-FL` |  Full-length crRNA with perfect-match guide-target pairing. |
 | `OsDEP1-PM-Split` |  Split crRNA with perfect-match guide-target pairing. |
