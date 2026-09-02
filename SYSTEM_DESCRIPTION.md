@@ -4,13 +4,13 @@ This dataset contains the first-batch Cas12a MD systems used to compare full-len
 
 ## Systems
  
- `OsDEP1-PM-FL` : Full-length crRNA with perfect-match guide-target pairing. 
+ `OsDEP1-PM-Full` : Full-length crRNA with perfect-match guide-target pairing. 
  
  `OsDEP1-PM-Split` : Split crRNA with perfect-match guide-target pairing. 
  
- `OsDEP1-MM17-FL` : Full-length crRNA with the M17 mismatch. 
+ `OsDEP1-MM17-Full` : Full-length crRNA with a mismatch at protospacer position 17.
  
- `OsDEP1-MM17-Split` : |Split crRNA with the M17 mismatch. 
+ `OsDEP1-MM17-Split` : Split crRNA with a mismatch at protospacer position 17.
  
 
 ## Chain and Register Definitions
