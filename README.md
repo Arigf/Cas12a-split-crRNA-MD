@@ -10,7 +10,7 @@ MD results : https://zenodo.org/records/22024385?token=eyJhbGciOiJIUzUxMiJ9.eyJp
 ## MD Method
 ### Step 1. AlphaFold3 prediction
 
-LbCas12a complexes were predicted using AlphaFold3 v.3.0.3  with LbCas12a protein, target DNA, and crRNA as inputs. Four systems were modeled: FL-PM, Split-PM, FL-MM17, and Split-MM17. The highest-confidence structure of each system was selected for MD simulations.
+LbCas12a complexes were predicted using AlphaFold3 (v.3.0.3)  with LbCas12a protein, target DNA, and crRNA as inputs. Four systems were modeled: PM-Full, PM-Split, MM17-Full and MM17-Split. The highest-confidence structure of each system was selected for MD simulations.
 
 ### Step 2. MD system preparation
 
@@ -22,4 +22,4 @@ Each system underwent staged energy minimization, followed by 20 ps NVT heating 
 
 ### Step 4. Trajectory analysis
 
-MD trajectories were analyzed using MDTraj, MDAnalysis, NumPy, pandas, and custom scripts. Base-pairing proxies, RuvC-domain distances, and RuvC-entry metrics were calculated to compare the four systems.
+RMSD values of the protein backbone and RuvC catalytic pocketwere calculated using MDTraj, MDAnalysis, NumPy, pandas, and custom scripts.
