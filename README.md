@@ -18,7 +18,7 @@ MD simulations were performed using OpenMM 8.5.2 , the Amber14 force field , and
 
 ### Step 3. Minimization, equilibration, and production MD
 
-Each system underwent staged energy minimization, followed by 20 ps NVT heating to 310.15 K, 50 ps restrained NPT equilibration, and 20 ps unrestrained NPT equilibration. Production MD was performed for 100 ns at 310.15 K and 1 atm with a 2 fs timestep.
+Each system underwent staged energy minimization, followed by 20 ps NVT heating to 310.15 K, 50 ps restrained NPT equilibration, and 20 ps unrestrained NPT equilibration. Production MD was performed for 300 ns at 310.15 K and 1 atm with a 2 fs timestep.
 
 ### Step 4. Trajectory analysis
 
