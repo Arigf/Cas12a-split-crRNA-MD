@@ -3,7 +3,7 @@ Molecular dynamics trajectories and analysis scripts for Cas12a split-crRNA syst
 
 MD Analysis Script : analysis_202608.
 
-MD results : Cas12a-split-crRNA-MD100-300ns
+MD results : Cas12a-split-crRNA-MD100-300ns.rar
 
 
 ## MD Method
